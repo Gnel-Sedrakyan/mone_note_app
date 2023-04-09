@@ -41,8 +41,8 @@ class _AppIconButtonState extends State<AppIconButton> {
                 : Theme.of(context).colorScheme.surface,
           ),
           child: DefaultTextStyle(
-            child: widget.child,
             style: const TextStyle(color: onSurfaceColorDarkTheme),
+            child: widget.child,
           ),
         ),
       ),

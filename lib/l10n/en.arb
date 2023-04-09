@@ -1,0 +1,20 @@
+{
+  "@@locale": "en",
+  "notes": "Notes",
+  "designedBy": "Designed by - {name}",
+  "redesignedBy": "Redesigned by - {name}",
+  "illustrations": "Illustrations - {name}",
+  "icons": "Icons - {name}",
+  "font": "Font - {name}",
+  "madeWithLove": "Made With Love",
+  "createFirstNote": "Create your first note !",
+  "errorOccured": "Some Error Occured...",
+  "discardQuestion": "Are your sure you want discard your changes ?",
+  "saveQuestion": "Save changes ?",
+  "discard": "Discard",
+  "save": "Save",
+  "keep": "Keep",
+  "oops": "Ooops...",
+  "somethingWentWrong": "Something went wrong",
+  "fileNotFound": "File not found. Try searching again."
+}

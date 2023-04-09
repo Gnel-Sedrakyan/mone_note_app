@@ -4,7 +4,7 @@ import 'package:mone_note_app/presentation/core/constants/defalut_values.dart';
 
 class AppTheme {
   static TextTheme _buildTextTheme(TextTheme base) {
-    const String fontName = 'Rubik';
+    const String fontName = 'Nunito';
     return base.copyWith(
       displayLarge: base.displayLarge?.copyWith(
         fontFamily: fontName,
@@ -23,9 +23,10 @@ class AppTheme {
         color: textColorDarkTheme,
       ),
       headlineSmall: base.headlineSmall?.copyWith(
-        fontFamily: fontName,
-        color: textColorDarkTheme,
-      ),
+          fontFamily: fontName,
+          color: textColorDarkTheme,
+          fontSize: 43,
+          fontWeight: FontWeight.w600),
       titleLarge: base.titleLarge?.copyWith(
         fontFamily: fontName,
         color: textColorDarkTheme,
@@ -73,8 +74,18 @@ class AppTheme {
     return baseThemeData.copyWith(
       shadowColor: defaultShadowColor,
       appBarTheme: const AppBarTheme(
-          backgroundColor: bgColorDarkTheme,
-          foregroundColor: textColorDarkTheme),
+        backgroundColor: bgColorDarkTheme,
+        foregroundColor: textColorDarkTheme,
+      ),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: bgColorDarkTheme,
+        foregroundColor: textColorDarkTheme,
+      ),
+      inputDecorationTheme: const InputDecorationTheme(
+        border: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        focusedBorder: InputBorder.none,
+      ),
       colorScheme: colorScheme,
       indicatorColor: bgColorDarkTheme,
       splashColor: bgColorDarkTheme,

@@ -1,0 +1,20 @@
+{
+  "@@locale": "hy",
+  "notes": "Նոթեր",
+  "designedBy": "Նախագծող - {name}",
+  "redesignedBy": "Վերարտադրող - {name}",
+  "illustrations": "Իլուստրացիաներ - {name}",
+  "icons": "Նշաններ - {name}",
+  "font": "ֆոնտ - {name}",
+  "madeWithLove": "Պատրաստված է Սիրով, Գնել Սեդրակյանի կողմից",
+  "createFirstNote": "կտցրա պլյուսին (-_-) !",
+  "errorOccured": "վայքու արա ...",
+  "discardQuestion": "լուրջջջ, ափսոս չի բայց?",
+  "saveQuestion": "Հլը լավ մտածի)",
+  "discard": "Ջնջել",
+  "save": "Օկ ա",
+  "keep": "Ափսոսա",
+  "oops": "Լավ է...",
+  "somethingWentWrong": "Մի բան նիտո ա",
+  "fileNotFound": "էս ինչես պոիսկ տվել XD"
+}

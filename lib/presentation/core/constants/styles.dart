@@ -9,12 +9,20 @@ const primaryShadow = BoxShadow(
   offset: defaultShadowOffset,
 );
 
-const defaultshadow = BoxShadow(
-  color: defaultShadowColor,
-  spreadRadius: defaultShadowSpreadRadius,
-  blurRadius: defaultShadowBlurRadius,
-  offset: defaultShadowOffset,
-);
+final defaultshadow = [
+  BoxShadow(
+    color: Colors.black.withOpacity(0.4),
+    spreadRadius: 0,
+    blurRadius: 10,
+    offset: const Offset(0, 5),
+  ),
+  BoxShadow(
+    color: Colors.black.withOpacity(0.4),
+    spreadRadius: 0,
+    blurRadius: 10,
+    offset: const Offset(-5, 0),
+  ),
+];
 
 const primaryGradient = LinearGradient(
   colors: [
