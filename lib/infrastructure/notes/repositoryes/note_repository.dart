@@ -8,21 +8,21 @@ import 'package:mone_note_app/infrastructure/notes/datasources/i_note_datasource
 
 @LazySingleton(as: INoteRepository)
 class NoteRepository implements INoteRepository {
-  final INoteLocalDatasource NoteLocalDataSource;
+  final INoteLocalDatasource noteLocalDataSource;
 
   NoteRepository({
-    required this.NoteLocalDataSource,
+    required this.noteLocalDataSource,
   });
 
   @override
   Future<Either<NoteFailure, List<Note>>> getSearchingNotes(
       {required String searchText}) async {
     try {
-      final List<Note> NoteFromLocalDatasource =
-          await NoteLocalDataSource.searchNotes(
+      final List<Note> noteFromLocalDatasource =
+          await noteLocalDataSource.searchNotes(
         searchText: searchText,
       );
-      return right(NoteFromLocalDatasource);
+      return right(noteFromLocalDatasource);
     } catch (_) {
       return left(const NoteFailure.noteDoesNotExist());
     }
@@ -31,9 +31,9 @@ class NoteRepository implements INoteRepository {
   @override
   Future<Either<NoteFailure, List<Note>>> getNotes() async {
     try {
-      final List<Note> NoteFromLocalDatasource =
-          await NoteLocalDataSource.getNotes();
-      return right(NoteFromLocalDatasource);
+      final List<Note> noteFromLocalDatasource =
+          await noteLocalDataSource.getNotes();
+      return right(noteFromLocalDatasource);
     } catch (_) {
       return left(const NoteFailure.noteDoesNotExist());
     }
@@ -42,7 +42,7 @@ class NoteRepository implements INoteRepository {
   @override
   Future<Option<NoteFailure>> addNote({required Note note}) async {
     try {
-      await NoteLocalDataSource.addNote(note: note);
+      await noteLocalDataSource.addNote(note: note);
       return const None();
     } catch (_) {
       return const Some(NoteFailure.noteDoesNotExist());
@@ -52,7 +52,7 @@ class NoteRepository implements INoteRepository {
   @override
   Future<Option<NoteFailure>> deleteNote({required Note note}) async {
     try {
-      await NoteLocalDataSource.deleteNote(note: note);
+      await noteLocalDataSource.deleteNote(note: note);
       return const None();
     } catch (_) {
       return const Some(NoteFailure.noteDoesNotExist());
@@ -60,11 +60,14 @@ class NoteRepository implements INoteRepository {
   }
 
   @override
-  Future<Option<NoteFailure>> editNoteById(
-      {required UniqueId noteId, required Note editedNote}) async {
+  Future<Option<NoteFailure>> editNoteById({
+    required UniqueId noteId,
+    required String title,
+    required String content,
+  }) async {
     try {
-      await NoteLocalDataSource.editNoteById(
-          noteId: noteId, editedNote: editedNote);
+      await noteLocalDataSource.editNoteById(
+          noteId: noteId, title: title, content: content);
       return const None();
     } catch (_) {
       return const Some(NoteFailure.noteDoesNotExist());

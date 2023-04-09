@@ -16,6 +16,7 @@ abstract class INoteRepository {
   });
   Future<Option<NoteFailure>> editNoteById({
     required UniqueId noteId,
-    required Note editedNote,
+    required String title,
+    required String content,
   });
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:mone_note_app/domain/core/entity.dart';
 import 'package:mone_note_app/domain/core/value_objects.dart';
 
@@ -17,6 +18,11 @@ class Note implements IEntity {
     required this.updatedAt,
   });
 
+  Color get color {
+    final hash = id.hashCode;
+    return Colors.primaries[hash % Colors.primaries.length];
+  }
+
   Note copyWith({
     UniqueId? id,
     String? title,
@@ -30,6 +36,19 @@ class Note implements IEntity {
       content: content ?? this.content,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+    );
+  }
+
+  static Note createNow({
+    required String title,
+    required String content,
+  }) {
+    return Note(
+      id: UniqueId(),
+      title: title,
+      content: content,
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
     );
   }
 

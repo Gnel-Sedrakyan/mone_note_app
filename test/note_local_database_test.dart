@@ -4,7 +4,6 @@ import 'package:mockito/mockito.dart';
 import 'package:mone_note_app/domain/core/value_objects.dart';
 import 'package:mone_note_app/domain/notes/note.dart';
 import 'package:mone_note_app/infrastructure/notes/datasources/note_local_datasource.dart';
-import 'package:mone_note_app/infrastructure/notes/models/note_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 import 'note_local_database_test.mocks.dart';
@@ -17,8 +16,7 @@ void main() {
 
     setUp(() {
       mockDatabase = MockDatabase();
-      datasource =
-          SqfliteNoteLocalDatasource(database: Future.value(mockDatabase));
+      datasource = SqfliteNoteLocalDatasource(database: mockDatabase);
     });
 
     final note = Note(
@@ -28,8 +26,6 @@ void main() {
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
     );
-
-    final noteModel = NoteModel.fromDomain(note);
 
     test(
         'searchNotes() should call query on the database with the correct arguments',
