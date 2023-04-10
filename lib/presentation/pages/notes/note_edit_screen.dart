@@ -17,10 +17,40 @@ class NoteEditScreen extends StatefulWidget {
 }
 
 class NoteEditScreenState extends State<NoteEditScreen> {
+  final localeStore = getIt<LocaleStore>();
+  final notesStore = getIt<NotesStore>();
+  final tagController = TextEditingController();
+
+  Widget _buildTagInput() {
+    return TextFormField(
+      controller: tagController,
+      decoration: InputDecoration(
+        hintText: 'Add tag',
+        suffixIcon: IconButton(
+          icon: const Icon(Icons.add),
+          onPressed: () {
+            final tagText = tagController.text.trim();
+            if (tagText.isNotEmpty) {
+              notesStore.addTagToSelectedNode(tagText);
+              tagController.clear();
+            }
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSaveButton() {
+    return ElevatedButton(
+      onPressed: () {
+        notesStore.addTagToSelectedNode(tagController.text);
+      },
+      child: const Text('Save'),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final localeStore = getIt<LocaleStore>();
-    final notesStore = getIt<NotesStore>();
     final TextEditingController titleController =
         TextEditingController(text: notesStore.selectedNote?.title);
     final TextEditingController contentController =
@@ -177,6 +207,11 @@ class NoteEditScreenState extends State<NoteEditScreen> {
                       )),
                 ],
               ),
+              const SizedBox(height: 30),
+              if (widget.isEdit) ...[
+                _buildTagInput(),
+                _buildSaveButton(),
+              ],
               const SizedBox(height: 30),
               TextField(
                 style: const TextStyle(fontSize: 48),

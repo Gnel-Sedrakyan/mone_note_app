@@ -56,6 +56,25 @@ class NoteViewScreenState extends State<NoteViewScreen> {
               ),
               const SizedBox(height: 30),
               Observer(
+                builder: (_) => ListView.builder(
+                    //TODO fix errors
+                    scrollDirection: Axis.horizontal,
+                    itemCount: notesStore.selectedNote?.tags.length,
+                    itemBuilder: (_, index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: Colors.amberAccent,
+                        ),
+                        child: Text(
+                          notesStore.selectedNote!.tags[index].getOrCrash(),
+                          style: const TextStyle(fontSize: 20),
+                          maxLines: null,
+                        ),
+                      );
+                    }),
+              ),
+              Observer(
                 builder: (_) => Text(
                   notesStore.selectedNote?.title ?? l10n.oops,
                   style: const TextStyle(fontSize: 48),
