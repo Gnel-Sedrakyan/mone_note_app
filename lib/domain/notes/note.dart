@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mone_note_app/domain/core/entity.dart';
 import 'package:mone_note_app/domain/core/value_objects.dart';
+import 'package:mone_note_app/domain/notes/value_objects.dart';
 
 class Note implements IEntity {
   @override
@@ -9,6 +10,7 @@ class Note implements IEntity {
   final String content;
   final DateTime createdAt;
   final DateTime updatedAt;
+  final List<Tag> tags;
 
   Note({
     required this.id,
@@ -16,6 +18,7 @@ class Note implements IEntity {
     required this.content,
     required this.createdAt,
     required this.updatedAt,
+    required this.tags,
   });
 
   Color get color {
@@ -29,6 +32,7 @@ class Note implements IEntity {
     String? content,
     DateTime? createdAt,
     DateTime? updatedAt,
+    List<Tag>? tags,
   }) {
     return Note(
       id: id ?? this.id,
@@ -36,12 +40,14 @@ class Note implements IEntity {
       content: content ?? this.content,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+      tags: tags ?? this.tags,
     );
   }
 
   static Note createNow({
     required String title,
     required String content,
+    List<Tag>? tags,
   }) {
     return Note(
       id: UniqueId(),
@@ -49,6 +55,7 @@ class Note implements IEntity {
       content: content,
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
+      tags: tags ?? [],
     );
   }
 

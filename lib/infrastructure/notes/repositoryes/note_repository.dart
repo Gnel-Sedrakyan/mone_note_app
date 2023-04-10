@@ -73,4 +73,32 @@ class NoteRepository implements INoteRepository {
       return const Some(NoteFailure.noteDoesNotExist());
     }
   }
+
+  @override
+  Future<Option<NoteFailure>> addTagToNoteById(
+      {required UniqueId noteId, required String tagText}) async {
+    try {
+      await noteLocalDataSource.addTagToNoteById(
+        noteId: noteId,
+        tag: tagText,
+      );
+      return const None();
+    } catch (_) {
+      return const Some(NoteFailure.noteDoesNotExist());
+    }
+  }
+
+  @override
+  Future<Option<NoteFailure>> deleteTagFromNoteById(
+      {required UniqueId noteId, required String tagText}) async {
+    try {
+      await noteLocalDataSource.deleteTagFromNoteById(
+        noteId: noteId,
+        tag: tagText,
+      );
+      return const None();
+    } catch (_) {
+      return const Some(NoteFailure.noteDoesNotExist()); //TODO add other cases
+    }
+  }
 }

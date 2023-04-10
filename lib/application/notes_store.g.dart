@@ -173,6 +173,15 @@ mixin _$NotesStoreImpl on NotesStore, Store {
         .run(() => super.updateSelectedNote(title, content));
   }
 
+  late final _$addTagToSelectedNodeAsyncAction =
+      AsyncAction('NotesStore.addTagToSelectedNode', context: context);
+
+  @override
+  Future<void> addTagToSelectedNode(String tagText) {
+    return _$addTagToSelectedNodeAsyncAction
+        .run(() => super.addTagToSelectedNode(tagText));
+  }
+
   late final _$deleteAsyncAction =
       AsyncAction('NotesStore.delete', context: context);
 

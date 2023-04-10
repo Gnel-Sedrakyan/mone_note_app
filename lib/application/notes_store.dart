@@ -105,6 +105,16 @@ abstract class NotesStore with Store {
   }
 
   @action
+  Future<void> addTagToSelectedNode(String tagText) async {
+    final result = await _noteRepository.addTagToNoteById(
+        noteId: selectedNote!.id, tagText: tagText);
+
+    result.fold(() {
+      getNotes();
+    }, (failure) {});
+  }
+
+  @action
   Future<void> delete(Note note) async {
     final result = await _noteRepository.deleteNote(note: note);
 

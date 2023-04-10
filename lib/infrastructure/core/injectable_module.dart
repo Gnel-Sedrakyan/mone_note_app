@@ -13,11 +13,11 @@ abstract class InjectableModule {
   @preResolve
   Future<Database> get database async {
     final dbPath = await getDatabasesPath();
-    final path = join(dbPath, 'notes.db');
+    final path = join(dbPath, 'note.db');
 
     return await openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: (db, version) {
         return db.execute(
           '''CREATE TABLE notes(
@@ -25,7 +25,8 @@ abstract class InjectableModule {
                 title TEXT,
                 content TEXT,
                 created_at TEXT,
-                updated_at TEXT
+                updated_at TEXT,
+                tags TEXT
               )''',
         );
       },

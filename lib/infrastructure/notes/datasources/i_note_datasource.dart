@@ -15,4 +15,9 @@ abstract class INoteLocalDatasource {
     required String content,
     required String title,
   });
+
+  Future<void> addTagToNoteById(
+      {required UniqueId noteId, required String tag});
+  Future<void> deleteTagFromNoteById(
+      {required UniqueId noteId, required String tag});
 }

@@ -25,6 +25,7 @@ void main() {
       content: 'This is a test note.',
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
+      tags: [],
     );
 
     test(
@@ -38,6 +39,7 @@ void main() {
           content: 'This is a test note.',
           createdAt: DateTime.now(),
           updatedAt: DateTime.now(),
+          tags: [],
         ),
         Note(
           id: UniqueId(),
@@ -45,6 +47,7 @@ void main() {
           content: 'This is another test note.',
           createdAt: DateTime.now(),
           updatedAt: DateTime.now(),
+          tags: [],
         ),
       ];
       when(mockDatabase.query(

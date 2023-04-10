@@ -19,4 +19,12 @@ abstract class INoteRepository {
     required String title,
     required String content,
   });
+  Future<Option<NoteFailure>> addTagToNoteById({
+    required UniqueId noteId,
+    required String tagText,
+  });
+  Future<Option<NoteFailure>> deleteTagFromNoteById({
+    required UniqueId noteId,
+    required String tagText,
+  });
 }
